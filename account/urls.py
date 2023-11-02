@@ -9,3 +9,4 @@ urlpatterns = [
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
 ]
+# "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5OTI5NTA4MywiaWF0IjoxNjk4NjkwMjgzLCJqdGkiOiIyMWNlYmNlMzhjZjk0OTEyYjM1MmZlNmVkNzRlYWI4MyIsInVzZXJfaWQiOjEzfQ.lRA4NZE3HtPYAdRCUhMw-g5GbkcJ17-MSzbwAg3Havc"````````````````````````

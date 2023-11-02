@@ -3,16 +3,19 @@ from rest_framework.views import APIView
 from .serializers import RegisterSerializer
 from rest_framework.response import Response
 from django.contrib.auth import get_user_model
+from drf_yasg.utils import swagger_auto_schema
 
 User = get_user_model()
 
 
 class RegisterView(APIView):
+    @swagger_auto_schema(request_body=RegisterSerializer())              # для отображения заполняемых полей в свагере
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response('Successfully registered', status=201)
+        return Response('You are successfully registered! Please check your mail and activate your account',
+                        status=201)
 
 
 class ActivationView(APIView):

@@ -7,6 +7,8 @@ from django.http import Http404
 from rest_framework import generics
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAdminUser, AllowAny
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
 
 
 # class CategoryView(APIView):
@@ -77,6 +79,9 @@ class CategoryView(PermissionMixin, ModelViewSet):
 class ProductView(PermissionMixin, ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ['title', 'category', 'price', 'in_stock']
+    search_fields = ['title', 'created_at', 'description']
 
     def get_serializer_class(self):
         if self.action == 'list':

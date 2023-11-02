@@ -28,3 +28,8 @@ class ProductSerializer(ModelSerializer):
         if price <= 0:
             raise ValidationError("Price can't be below zero")
         return price
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['comments'] = instance.comments.count()
+        return representation
